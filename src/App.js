@@ -13,6 +13,8 @@ function App() {
   const show = useSelector((state) => state.ui.showCart);
   const notification = useSelector((state) => state.ui.notification);
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     // Prevent sending an empty cart on initialization which will override any existing one
     if (isInitial) {
@@ -20,8 +22,8 @@ function App() {
       return;
     }
 
-    sendCartData(cart);
-  }, [cart]);
+    dispatch(sendCartData(cart));
+  }, [cart, dispatch]);
 
   return (
     <>
