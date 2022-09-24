@@ -12,7 +12,7 @@ CD into the project directory and run the following command:
 npm install
 ```
 
-To use the backend, (and if you have time) you can create your own simple API endpoints and replace the HTTP Requests links on this project with your own. Alternatively, you can quickly get a Firebase real-time-database test-link and use that instead.
+To use the backend, (and if you have time) you can create your own simple **API endpoints** and replace the **HTTP Requests links** on this project with your own. Alternatively, you can quickly get a **Firebase real-time-database test-link** and use that instead.
 
 👤 **Author**
 
