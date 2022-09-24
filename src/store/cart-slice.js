@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { uiActions } from "./ui-slice";
 
 const cartSlice = createSlice({
   name: "cart",
@@ -48,6 +49,48 @@ const cartSlice = createSlice({
     },
   },
 });
+
+export const sendCartData = (cart) => {
+  return async (dispatch) => {
+    try {
+      dispatch(
+        uiActions.showNotification({
+          status: "pending",
+          title: "Sending request request",
+          message: "Request being sent to the server...",
+        })
+      );
+
+      const result = await fetch("https://your-api-endpoint.com/oders.json", {
+        method: "PUT",
+        body: JSON.stringify(cart),
+      });
+
+      if (!result.ok) {
+        throw new Error("ERROR SENDING REQUEST🔥🔥🔥");
+      }
+
+      // When there is no error
+      dispatch(
+        uiActions.showNotification({
+          status: "success",
+          title: "Send request successfully",
+          message: "The request was sent successfully",
+        })
+      );
+    } catch (error) {
+      console.log(error);
+
+      dispatch(
+        uiActions.showNotification({
+          status: "error",
+          title: "Error sending request",
+          message: "There was an error in sending a request",
+        })
+      );
+    }
+  };
+};
 
 export const cartActions = cartSlice.actions;
 export default cartSlice;
